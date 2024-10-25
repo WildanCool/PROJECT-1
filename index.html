@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>To do List</title>
+  </head>
+  <body>
+    <header class="w-full h-20 flex bg-yellow-500 py-2 px-10">
+      <img src="image/LOGO TDL.svg" alt="" class="w-14 h-14" />
+      <h1 class="text-xl font-light text-white ml-[80%] mt-5">
+        #MakeYourListHere
+      </h1>
+    </header>
+
+    <div class="wrapper place-items-center py-10">
+      <div class="container w-1/2 p-5 bg-yellow-500 rounded-2xl">
+        <h2 class="text-3xl font-serif text-white">
+          Tugas apa yang ingin dilakukan?
+        </h2>
+        <form action="#" id="form" class="form">
+          <div class="mt-7">
+            <label for="tilte" class="text-white text-lg"
+              >Masukkan hal yang akan dilakukan</label
+            >
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="w-full h-8 px-2 rounded-xl"
+              required
+            />
+          </div>
+
+          <div class="mt-5">
+            <label for="date" class="text-white text-lg"
+              >Masukkan tanggal harus selesai</label
+            >
+            <input
+              type="date"
+              id="date"
+              name="date"
+              class="w-full h-8 px-2 rounded-xl"
+              required
+            />
+          </div>
+
+          <input
+            type="submit"
+            value="Submit"
+            name="Submit"
+            class="btn-submit w-20 h-8 ml-[86%] mt-3 bg-white rounded-full"
+          />
+        </form>
+      </div>
+
+      <div class="container w-1/2 p-5 mt-7 bg-yellow-500 rounded-2xl">
+        <h2 class="container-header text-white text-2xl text font-serif">
+          Yang harus dilakukan
+        </h2>
+
+        <div class="" id="tugas"></div>
+      </div>
+
+      <div class="container w-1/2 p-5 mt-7 bg-yellow-500 rounded-2xl">
+        <h2 class="container-header text-white text-2xl text font-serif">Yang sudah dilakukan</h2>
+        <div class="" id="tugas-terselesaikan"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

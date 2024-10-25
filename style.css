@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+html,
+body {
+  font-family: Raleway, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.shadow {
+  box-shadow: 5px 5px 10px rgba(255, 255, 0, 0.5),
+    15px 15px 40px rgba(255, 255, 0, 0.2);
+}
+
+.btn-submit {
+  /* width: fit-content; */
+  font-family: Raleway, sans-serif;
+  /* border-radius: 16px; */
+  /* padding: 12px 24px; */
+  border: 2px solid #cca109;
+  color: black;
+  /* font-size: 16px; */
+  /* margin-top: auto; */
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: #cca109;
+  color: white;
+}
+
+.check-button {
+  width: 40px;
+  height: 40px;
+
+  background: url("../image/check-button-outline.png");
+  background-size: contain;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+}
+
+.check-button:hover {
+  background: url("../image/check-button-fill.png");
+  background-size: contain;
+}
+
+.trash-button {
+  width: 40px;
+  height: 40px;
+
+  background: url("../image/trash-outline.png");
+  background-size: contain;
+  margin-left: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.trash-button:hover {
+  background: url("../image/trash-fill.png");
+  background-size: contain;
+}
+
+.undo-button {
+  width: 40px;
+  height: 40px;
+
+  background: url("../image/undo-arrow.png");
+  background-size: contain;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+}
+
+.undo-button:hover {
+  background: url("../image/undo-arrow.png");
+  background-size: contain;
+}
+
+.check-button:focus,
+.trash-button {
+  outline: none;
+}
