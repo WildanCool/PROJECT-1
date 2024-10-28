@@ -1,9 +1,48 @@
+const SAVED_EVENT = "saved-todo";
+const STORAGE_KEY = "TODO_APPS";
+function saveData() {
+  if (isStorageExist()) {
+    const parsed = JSON.stringify(tugas);
+    localStorage.setItem(STORAGE_KEY, parsed);
+    document.dispatchEvent(new Event(SAVED_EVENT));
+  }
+}
+
+function isStorageExist() /* boolean */ {
+  if (typeof Storage === "undefined") {
+    alert("Browser kamu tidak mendukung local storage");
+    return false;
+  }
+  return true;
+}
+
+function loadDataFromStorage() {
+  const serializedData = localStorage.getItem(STORAGE_KEY);
+  let data = JSON.parse(serializedData);
+
+  if (data !== null) {
+    for (const todo of data) {
+      tugas.push(todo);
+    }
+  }
+
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+document.addEventListener(SAVED_EVENT, function () {
+  console.log(localStorage.getItem(STORAGE_KEY));
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const submitForm = document.getElementById("form");
   submitForm.addEventListener("submit", function (event) {
     event.preventDefault();
     addTugas();
   });
+
+  if (isStorageExist()) {
+    loadDataFromStorage();
+  }
 });
 
 function addTugas() {
@@ -20,6 +59,7 @@ function addTugas() {
   tugas.push(tugasObject);
 
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 function generateId() {
@@ -118,11 +158,12 @@ document.addEventListener(RENDER_EVENT, function () {
 
 function removeTaskFromCompleted(todoId) {
   const tugasTarget = findTodoIndex(todoId);
- 
+
   if (tugasTarget === -1) return;
- 
+
   tugas.splice(tugasTarget, 1);
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 function findTodoIndex(todoId) {
@@ -131,18 +172,18 @@ function findTodoIndex(todoId) {
       return index;
     }
   }
- 
+
   return -1;
 }
- 
- 
+
 function undoTaskFromCompleted(todoId) {
   const tugasTarget = findTodo(todoId);
- 
+
   if (tugasTarget == null) return;
- 
+
   tugasTarget.isCompleted = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 function addTaskToCompleted(todoId) {
@@ -152,6 +193,7 @@ function addTaskToCompleted(todoId) {
 
   tugasTarget.isCompleted = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 function findTodo(todoId) {
